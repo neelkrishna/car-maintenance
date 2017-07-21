@@ -1,0 +1,27 @@
+{
+  "name": "car-maintenance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "aguid": "^2.0.0",
+    "body-parser": "^1.17.1",
+    "connect": "^3.6.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^7.4.1",
+    "jwt-express": "^1.1.0",
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "njwt": "^0.4.0",
+    "path": "^0.12.7",
+    "sequelize": "^3.30.4"
+  },
+  "author": "",
+  "license": "ISC"
+}

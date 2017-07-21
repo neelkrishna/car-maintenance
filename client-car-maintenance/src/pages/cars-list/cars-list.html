@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cars</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let car of cars">
+      <button ion-item (click)="carSelected(car)">
+        <h2>{{car.make}} {{car.model}}</h2>
+        <p>{{car.mileage}} miles</p>
+
+
+      </button>
+
+
+
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
