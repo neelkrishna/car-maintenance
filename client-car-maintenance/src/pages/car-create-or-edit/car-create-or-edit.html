@@ -7,12 +7,51 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>car-create-or-edit</ion-title>
+    <ion-title>{{ car.make ? car.make : "New Car"}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div class="car-create-or-edit" padding>
+    <form (ngSubmit)="saveClicked()">
+      <ion-list>
 
+        <ion-item>
+          <ion-label floating>Make</ion-label>
+          <ion-input type="text" name="make" [(ngModel)]="car.make"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Model</ion-label>
+          <ion-input type="text" name="model" [(ngModel)]="car.model"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Miles</ion-label>
+          <ion-input type="number" name="miles" [(ngModel)]="car.miles"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Year</ion-label>
+          <ion-input type="number" name="year" [(ngModel)]="car.year"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Notes</ion-label>
+          <ion-input type="text" name="notes" [(ngModel)]="car.notes"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <button ion-button ion-button color="primary" type="submit">
+        Save
+      </button>
+
+      <button ion-button ion-button color="danger" (click)="cancelClicked()">
+        Cancel
+      </button>
+    </form>
+  </div>
 </ion-content>

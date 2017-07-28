@@ -3,6 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button (click)="createCar()">
+        <ion-icon name="create" ></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Cars</ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,7 +18,7 @@
     <ion-item-sliding *ngFor="let car of cars">
       <button ion-item (click)="carSelected(car)">
         <h2>{{car.make}} {{car.model}}</h2>
-        <p>{{car.mileage}} miles</p>
+        <p>{{car.miles}} miles</p>
 
 
       </button>

@@ -33,7 +33,7 @@ export class CarService {
     return this._apiService.get(`${this._carsUrl}/${id}`, '');
   }
 
-  createOrUpdateCar(car: Car, timesForCar: any) {
+  createOrUpdateCar(car: Car) {
     if(car.id){
       let updatedCar: Car;
       updatedCar = new Car;
