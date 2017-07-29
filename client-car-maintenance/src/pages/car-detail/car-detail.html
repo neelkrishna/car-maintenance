@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ car.carName }}</ion-title>
+    <ion-title>{{ car.year }} {{ car.make }} {{ car.model }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,28 +15,29 @@
 
 <ion-content>
   <div class="one-car" padding>
-    <p>Make: {{car.make}}</p>
-    <p>Model: {{car.model}}</p>
-    <p>Miles: {{car.miles}}</p>
+    <h4>Miles: {{car.miles}}</h4>
 
-    <button ion-button ion-button color="secondary" (click)="openAddOilChange(car)">
-      Add Oil Change 
+    <button ion-button ion-button color="secondary" (click)="showRadio()">
+      Add Entry
     </button>
 
     <button ion-button ion-button color="primary" (click)="editCar(car)">
       Edit Car Details
     </button>
     <br/>
-    <h1>Oil Changes for {{car.carName}}</h1>
+    <h1>Oil Changes:</h1>
     <ion-list>
-      <div *ngFor="let oilChange of oilChanges">
-          <div>
-            <div (click)="oilChangeForcarClicked(oilChange)"><h3>{{oilChange.date}}</h3></div>
-            <button align="right" ion-button ion-button color="danger" (click)="removeoilChange(oilChange)">
-              Remove
-            </button>
-          </div>
+      <div *ngIf="oilChangesForCar.length == 0">None</div>
+      <div *ngElse>
+        <div *ngFor="let oilChange of oilChanges">
+            <div>
+              <div (click)="oilChangeForCarClicked(oilChange)"><h3>{{oilChange.date}}</h3></div>
+              <button align="right" ion-button ion-button color="danger" (click)="removeoilChange(oilChange)">
+                Remove
+              </button>
+            </div>
 
+        </div>
       </div>
     </ion-list>
   </div>

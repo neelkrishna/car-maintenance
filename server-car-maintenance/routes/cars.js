@@ -39,16 +39,16 @@ router.delete('/:carId/:inspectionId',   function (req,res, next) {
     carService.removeInspectionFromCar(req, res, next);
 });
 
-router.post('/:carId/:tireRotationId', function (req, res, next) {
-    carService.addTireRotationToCar(req, res, next);
+router.post('/:carId/:oilChangeId', function (req, res, next) {
+    carService.addOilChangeToCar(req, res, next);
 });
 
-router.get('/:carId/tireRotations', function (req, res, next) {
-    carService.getTireRotationsForCar(req, res, next);
+router.get('/:carId/oilChanges', function (req, res, next) {
+    carService.getOilChangesForCar(req, res, next);
 });
 
-router.delete('/:carId/:tireRotationId',   function (req,res, next) {
-    carService.removeTireRotationFromCar(req, res, next);
+router.delete('/:carId/:oilChangeId',   function (req,res, next) {
+    carService.removeOilChangeFromCar(req, res, next);
 });
 
 router.post('/:carId/:otherEntryId', function (req, res, next) {
