@@ -123,31 +123,12 @@ exports.carService = {
     },
     getOilChangesForCar: function (req, res, next) {
         return models.sequelize.transaction(function (t) {
-            connection.query('SELECT * from CarOilChange where carId = "' + req.params.carId + '"', function(selectErr, rows) {
-                if (!selectErr) {
-                    var oilChangeIds = []
-                    for(var i = 0; i < rows.length; i++){
-                        oilChangeIds[i] = rows[i].oilChangeId;
-                    }
-                    oilChangeQuery = '';
-                    for(var i = 0; i < oilChangeIds.length; i++){
-                        if(i != oilChangeIds.length - 1){
-                            oilChangeQuery += oilChangeIds[i] + " OR id = ";
-                        }else{
-                            oilChangeQuery += oilChangeIds[i];
-                        }
-                    }
-                    if(oilChangeQuery == ""){
-                        oilChangeQuery = 0;
-                    }
-                    var q = connection.query('SELECT * from OilChanges where id = ' + oilChangeQuery + '', 
-                        function(err, selectRows) {
-                        res.send(responseService.generateResponse(selectRows, 200, {}));
-                    });
-                }else{
-                    res.send(responseService.generateResponse(selectErr, 500, {message: "Oil Changes for car not loaded", level:"E"}));
-                    console.log('Error while performing Select.  ' + selectErr);
-                }
+            return models.OilChange.findAll({where: {carId: req.params.carId} })
+            .then(function (cars) {
+                res.send(responseService.generateResponse(cars, 200, {}));
+            })
+            .catch(function (error){
+                res.send(responseService.generateResponse(error, 404, {message: "Cars not found", level: "E"}));
             });
         })
         .then(function(result){

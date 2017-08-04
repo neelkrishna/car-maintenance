@@ -27,15 +27,14 @@
     <br/>
     <h1>Oil Changes:</h1>
     <ion-list>
-      <div *ngIf="oilChangesForCar.length == 0">None</div>
-      <div *ngElse>
-        <div *ngFor="let oilChange of oilChanges">
-            <div>
-              <div (click)="oilChangeForCarClicked(oilChange)"><h3>{{oilChange.date}}</h3></div>
-              <button align="right" ion-button ion-button color="danger" (click)="removeoilChange(oilChange)">
-                Remove
-              </button>
-            </div>
+       <div *ngIf="oilChangesForCar.length == 0">None</div> 
+      <div>
+        <div *ngFor="let oilChange of oilChangesForCar">
+            <!-- <button ion-item (click)="oilChangeForCarClicked(oilChange)">
+              <h3>{{oilChange.date}}</h3>
+            </button> -->
+
+            {{oilChange.date}}
 
         </div>
       </div>
