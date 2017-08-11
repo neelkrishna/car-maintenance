@@ -5,17 +5,36 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>inspections-list</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="createInspection()">
+        <ion-icon name="create" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Inspections</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let inspection of inspections">
+      <button ion-item (click)="inspectionSelected(inspection)">
+        <h2>Performed on {{inspection.date}} at {{inspection.mileage}} miles</h2>
+        <p>Cost: ${{inspection.cost}}</p>
+        <p>Next due: {{inspection.mileageNextDue}} miles</p>
+        <p>Notes: {{inspection.notes}}</p>
+        <p end>Car: {{inspection.car.year}} {{inspection.car.make}} {{inspection.car.model}}</p> 
 
+
+      </button>
+
+
+
+
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

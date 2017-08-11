@@ -5,17 +5,36 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>oil-changes-list</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="createOilChange()">
+        <ion-icon name="create" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>OilChanges</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let oilChange of oilChanges">
+      <button ion-item (click)="oilChangeSelected(oilChange)">
+        <h2>Performed on {{oilChange.date}} at {{oilChange.mileage}} miles</h2>
+        <p>Cost: ${{oilChange.cost}}</p>
+        <p>Next due: {{oilChange.mileageNextDue}} miles</p>
+        <p>Notes: {{oilChange.notes}}</p>
+        <p end>Car: {{oilChange.car.year}} {{oilChange.car.make}} {{oilChange.car.model}}</p> 
 
+
+      </button>
+
+
+
+
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

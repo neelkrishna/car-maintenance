@@ -5,17 +5,36 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>other-entries-list</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="createOtherEntry()">
+        <ion-icon name="create" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>OtherEntries</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let otherEntry of otherEntries">
+      <button ion-item (click)="otherEntrySelected(otherEntry)">
+        <h2>Performed on {{otherEntry.date}} at {{otherEntry.mileage}} miles</h2>
+        <p>Cost: ${{otherEntry.cost}}</p>
+        <p>Next due: {{otherEntry.mileageNextDue}} miles</p>
+        <p>Notes: {{otherEntry.notes}}</p>
+        <p end>Car: {{otherEntry.car.year}} {{otherEntry.car.make}} {{otherEntry.car.model}}</p> 
 
+
+      </button>
+
+
+
+
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

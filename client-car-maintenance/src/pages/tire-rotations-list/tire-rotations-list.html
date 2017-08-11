@@ -5,17 +5,36 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>tire-rotations-list</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="createTireRotation()">
+        <ion-icon name="create" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>TireRotations</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tireRotation of tireRotations">
+      <button ion-item (click)="tireRotationSelected(tireRotation)">
+        <h2>Performed on {{tireRotation.date}} at {{tireRotation.mileage}} miles</h2>
+        <p>Cost: ${{tireRotation.cost}}</p>
+        <p>Next due: {{tireRotation.mileageNextDue}} miles</p>
+        <p>Notes: {{tireRotation.notes}}</p>
+        <p end>Car: {{tireRotation.car.year}} {{tireRotation.car.make}} {{tireRotation.car.model}}</p> 
 
+
+      </button>
+
+
+
+
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

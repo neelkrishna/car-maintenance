@@ -1,3 +1,4 @@
+import { Car } from './car';
 export class OilChange {
     id?: number;
     date ?: string;
@@ -5,4 +6,6 @@ export class OilChange {
     mileageNextDue?: number;
     cost?: number;
     notes?: string;
+    CarId?: number;
+    car?: Car;
 }
